@@ -31,7 +31,7 @@ def descomprime_zip(archivo, directorio='datos'):
     archivo : str
         Nombre del archivo zip.
     directorio : str
-        Directorio donde se descomprimirá el archivo.
+        Directorio donde se descomprimirá el archivo.P
     """
     with zipfile.ZipFile(archivo, 'r') as zip_ref:
         zip_ref.extractall(directorio)

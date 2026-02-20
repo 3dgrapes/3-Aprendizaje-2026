@@ -12,6 +12,7 @@ __date__ = "enero 2025"
 
 
 import math
+import random
 from collections import Counter
 
 def entrena_arbol(datos, target, clase_default, 
@@ -47,7 +48,13 @@ def entrena_arbol(datos, target, clase_default,
     """
     atributos = list(datos[0].keys())
     atributos.remove(target)
-        
+
+
+    # Esto checa si 
+    if (variables_seleccionadas is not None and type(variables_seleccionadas) == int):
+        num = min(len(atributos), variables_seleccionadas)
+        atributos = random.sample(atributos, num)
+
     # Criterios para deterinar si es un nodo hoja
     if  len(datos) == 0 or len(atributos) == 0:
         return NodoN(terminal=True, clase_default=clase_default)
@@ -264,7 +271,6 @@ def main():
         {"atributo1": 2, "atributo2": 4, "clase": "positiva"},
         {"atributo1": 3, "atributo2": 4, "clase": "positiva"},
         {"atributo1": 4, "atributo2": 4, "clase": "positiva"},
-     
    ]
     
     raiz = entrena_arbol(datos, "clase", "positiva")
